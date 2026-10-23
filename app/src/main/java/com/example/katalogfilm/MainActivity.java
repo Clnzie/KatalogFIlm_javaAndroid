@@ -1,18 +1,17 @@
 package com.example.katalogfilm;
 
-import android.app.Activity;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.katalogfilm.databinding.ActivityMainBinding;
+import com.example.katalogfilm.ui.akun.AkunFragment;
+import com.example.katalogfilm.ui.fav.FavFragment;
+import com.example.katalogfilm.ui.home.HomeFragment;
+import com.example.katalogfilm.ui.search.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 

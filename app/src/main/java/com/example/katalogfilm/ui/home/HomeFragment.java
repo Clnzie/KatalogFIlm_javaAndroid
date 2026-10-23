@@ -1,7 +1,6 @@
-package com.example.katalogfilm;
+package com.example.katalogfilm.ui.home;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
@@ -12,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.katalogfilm.data.model.Movie;
+import com.example.katalogfilm.data.model.remote.TmdbClient;
 import com.example.katalogfilm.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;

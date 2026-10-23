@@ -1,4 +1,4 @@
-package com.example.katalogfilm;
+package com.example.katalogfilm.ui.home;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
+import com.example.katalogfilm.R;
+import com.example.katalogfilm.data.model.Movie;
 
 import java.util.List;
 import java.util.Locale;

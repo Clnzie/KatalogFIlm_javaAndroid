@@ -1,4 +1,4 @@
-package com.example.katalogfilm;
+package com.example.katalogfilm.data.model;
 
 public class Movie {
     private final int id;
