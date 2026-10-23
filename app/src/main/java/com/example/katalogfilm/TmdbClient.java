@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 
 public class TmdbClient {
 
-    private static final String TOKEN = "b0b1b7542963befc2f848ce363e5c4ab";
+    private static final String TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMGIxYjc1NDI5NjNiZWZjMmY4NDhjZTM2M2U1YzRhYiIsIm5iZiI6MTcwNTk3NDE0MC4wMzgsInN1YiI6IjY1YWYxOTdjYmQ1ODhiMDEwYjVkYzQ4NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.U-e93328v0DHgDO4dWJyCha_THXFdANzWr1uy37SF-A";
 
     private static final ExecutorService executor = Executors.newFixedThreadPool(2);
 
@@ -35,7 +35,9 @@ public class TmdbClient {
             HttpURLConnection connection = null;
 
             try {
-                URL url = new URL("https://api.themoviedb.org/3/movie/now_playing" + "?language=id-ID&page=1");
+                URL url = new URL("https://api.themoviedb.org/3/movie/now_playing"
+                        + "?language=id-ID&page=1"
+                );
 
                 connection = (HttpURLConnection) url.openConnection();
 
@@ -44,11 +46,11 @@ public class TmdbClient {
                 connection.setReadTimeout(15000);
 
                 connection.setRequestProperty(
-                        "Authorization", "Bearer" + TOKEN
+                        "Authorization", "Bearer " + TOKEN
                 );
 
                 connection.setRequestProperty(
-                        "accept", "appliaction/json"
+                        "accept", "application/json"
                 );
 
                 int status = connection.getResponseCode();
@@ -82,7 +84,7 @@ public class TmdbClient {
                         new JSONObject(response.toString());
 
                 JSONArray result =
-                        json.getJSONArray("result");
+                        json.getJSONArray("results");
 
                 List<Movie> movies = new ArrayList<>();
 

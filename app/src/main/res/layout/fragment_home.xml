@@ -16,7 +16,6 @@
         android:layout_height="wrap_content"
         android:textColor="@color/col2"
         android:layout_gravity="center"
-        android:textStyle="Bold"
         android:text="FIlm Popular" />
 
     <ProgressBar
