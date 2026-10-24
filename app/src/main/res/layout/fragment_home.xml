@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/col2"
         android:layout_gravity="center"
-        android:text="FIlm Popular" />
+        android:text="FIlm Popular on this day" />
 
     <ProgressBar
         android:id="@+id/progressBar"
