@@ -57,10 +57,38 @@ public class FavFragment extends Fragment {
         }
     }
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fav, container, false);
+    public View onCreateView(
+            LayoutInflater inflater,
+            ViewGroup container,
+            Bundle savedInstanceState) {
+
+        View view = inflater.inflate(
+                R.layout.fragment_fav,
+                container,
+                false
+        );
+
+        int[] tombolHapus = {
+                R.id.btnHapus1,
+                R.id.btnHapus2,
+                R.id.btnHapus3,
+                R.id.btnHapus4,
+                R.id.btnHapus5,
+                R.id.btnHapus6
+        };
+
+        for (int id : tombolHapus) {
+            view.findViewById(id).setOnClickListener(v -> {
+                View kartu = (View) v.getParent();
+                View baris = (View) kartu.getParent();
+
+                kartu.setVisibility(View.GONE);
+            });
+        }
+
+        return view;
     }
+
 }

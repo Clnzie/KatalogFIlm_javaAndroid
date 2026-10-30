@@ -1,17 +1,508 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/col1"
+    android:fillViewport="true"
     tools:context=".ui.fav.FavFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/col2"
-        android:text="Fav" />
+        android:orientation="vertical"
+        android:padding="10dp">
 
-</FrameLayout>
+        <!-- Judul halaman -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Favorite Film"
+            android:textColor="@color/col3"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="14dp" />
+
+        <!-- Baris film pertama -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <!-- Kartu film 1 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:padding="5dp"
+                android:orientation="vertical"
+                android:background="@color/col4">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp">
+
+                    <!-- Poster film -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#555555"
+                        android:gravity="center"
+                        android:text="🎬"
+                        android:textSize="42sp" />
+
+                    <!-- Ikon hati -->
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top|end"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/bg_favorite_heart"
+                        android:gravity="center"
+                        android:text="♥"
+                        android:textColor="#171717"
+                        android:textSize="18sp" />
+
+                </FrameLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Kung Fu Panda 4"
+                    android:textColor="@color/col3"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:maxLines="1" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="★ 8.5"
+                    android:textColor="@color/col2"
+                    android:textSize="11sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="5dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnHapus1"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:padding="0dp"
+                    android:text="Hapus"
+                    android:textAllCaps="false"
+                    android:textSize="11sp"
+                    android:textColor="#171717"
+                    android:background="@drawable/bg_button_yellow"
+                    android:stateListAnimator="@null"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"/>
+
+            </LinearLayout>
+
+            <!-- Kartu film 2 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:padding="5dp"
+                android:orientation="vertical"
+                android:background="@color/col4">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp">
+
+                    <!-- Poster film -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#555555"
+                        android:gravity="center"
+                        android:text="🎬"
+                        android:textSize="42sp" />
+
+                    <!-- Ikon hati -->
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top|end"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/bg_favorite_heart"
+                        android:gravity="center"
+                        android:text="♥"
+                        android:textColor="#171717"
+                        android:textSize="18sp" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Kung Fu Panda 4"
+                    android:textColor="@color/col3"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="★ 8.5"
+                    android:textColor="@color/col2"
+                    android:textSize="11sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="5dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnHapus2"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:padding="0dp"
+                    android:text="Hapus"
+                    android:textAllCaps="false"
+                    android:textSize="11sp"
+                    android:textColor="#171717"
+                    android:background="@drawable/bg_button_yellow"
+                    android:stateListAnimator="@null"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Baris film kedua -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginTop="10dp">
+
+            <!-- Kartu film 3 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:padding="5dp"
+                android:orientation="vertical"
+                android:background="@color/col4">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp">
+
+                    <!-- Poster film -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#555555"
+                        android:gravity="center"
+                        android:text="🎬"
+                        android:textSize="42sp" />
+
+                    <!-- Ikon hati -->
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top|end"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/bg_favorite_heart"
+                        android:gravity="center"
+                        android:text="♥"
+                        android:textColor="#171717"
+                        android:textSize="18sp" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Kung Fu Panda 4"
+                    android:textColor="@color/col3"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="★ 8.5"
+                    android:textColor="@color/col2"
+                    android:textSize="11sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="5dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnHapus3"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:padding="0dp"
+                    android:text="Hapus"
+                    android:textAllCaps="false"
+                    android:textSize="11sp"
+                    android:textColor="#171717"
+                    android:background="@drawable/bg_button_yellow"
+                    android:stateListAnimator="@null"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"/>
+
+            </LinearLayout>
+
+            <!-- Kartu film 4 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:padding="5dp"
+                android:orientation="vertical"
+                android:background="@color/col4">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp">
+
+                    <!-- Poster film -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#555555"
+                        android:gravity="center"
+                        android:text="🎬"
+                        android:textSize="42sp" />
+
+                    <!-- Ikon hati -->
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top|end"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/bg_favorite_heart"
+                        android:gravity="center"
+                        android:text="♥"
+                        android:textColor="#171717"
+                        android:textSize="18sp" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Kung Fu Panda 4"
+                    android:textColor="@color/col3"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="★ 8.5"
+                    android:textColor="@color/col2"
+                    android:textSize="11sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="5dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnHapus4"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:padding="0dp"
+                    android:text="Hapus"
+                    android:textAllCaps="false"
+                    android:textSize="11sp"
+                    android:textColor="#171717"
+                    android:background="@drawable/bg_button_yellow"
+                    android:stateListAnimator="@null"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Baris film ketiga -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="12dp">
+
+            <!-- Kartu film 5 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:padding="5dp"
+                android:orientation="vertical"
+                android:background="@color/col4">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp">
+
+                    <!-- Poster film -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#555555"
+                        android:gravity="center"
+                        android:text="🎬"
+                        android:textSize="42sp" />
+
+                    <!-- Ikon hati -->
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top|end"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/bg_favorite_heart"
+                        android:gravity="center"
+                        android:text="♥"
+                        android:textColor="#171717"
+                        android:textSize="18sp" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Kung Fu Panda 4"
+                    android:textColor="@color/col3"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="★ 8.5"
+                    android:textColor="@color/col2"
+                    android:textSize="11sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="5dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnHapus5"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:padding="0dp"
+                    android:text="Hapus"
+                    android:textAllCaps="false"
+                    android:textSize="11sp"
+                    android:textColor="#171717"
+                    android:background="@drawable/bg_button_yellow"
+                    android:stateListAnimator="@null"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"/>
+
+            </LinearLayout>
+
+            <!-- Kartu film 6 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:padding="5dp"
+                android:orientation="vertical"
+                android:background="@color/col4">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp">
+
+                    <!-- Poster film -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#555555"
+                        android:gravity="center"
+                        android:text="🎬"
+                        android:textSize="42sp" />
+
+                    <!-- Ikon hati -->
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top|end"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/bg_favorite_heart"
+                        android:gravity="center"
+                        android:text="♥"
+                        android:textColor="#171717"
+                        android:textSize="18sp" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Kung Fu Panda 4"
+                    android:textColor="@color/col3"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="★ 8.5"
+                    android:textColor="@color/col2"
+                    android:textSize="11sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="5dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnHapus6"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:padding="0dp"
+                    android:text="Hapus"
+                    android:textAllCaps="false"
+                    android:textSize="11sp"
+                    android:textColor="#171717"
+                    android:background="@drawable/bg_button_yellow"
+                    android:stateListAnimator="@null"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

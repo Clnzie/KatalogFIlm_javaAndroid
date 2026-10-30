@@ -1,17 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/col1"
-    tools:context=".ui.akun.AkunFragment">
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Judul halaman -->
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/col2"
-        android:text="Akun" />
+        android:text="Profil"
+        android:textColor="@color/col3"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="4dp" />
 
-</FrameLayout>
+    <!-- Avatar pengguna -->
+    <TextView
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_circle"
+        android:gravity="center"
+        android:text="👤"
+        android:textSize="42sp" />
+
+    <!-- Nama pengguna -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Raihan Fajar"
+        android:textColor="@color/col3"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <!-- Username -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="raihandwianto"
+        android:textColor="#999999"
+        android:textSize="12sp"
+        android:gravity="center" />
+
+    <!-- Menu riwayat rating -->
+    <Button
+        android:id="@+id/btnRiwayatRating"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        android:text="★   Riwayat Rating     ›"
+        android:textColor="#171717"
+        android:textSize="14sp"
+        android:backgroundTint="@color/col2" />
+
+    <!-- Menu keluar -->
+    <Button
+        android:id="@+id/btnKeluar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:text="⇥   Keluar     ›"
+        android:textColor="#171717"
+        android:textSize="14sp"
+        android:backgroundTint="@color/col2" />
+
+</LinearLayout>
