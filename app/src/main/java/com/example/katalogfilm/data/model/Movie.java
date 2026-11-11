@@ -1,16 +1,24 @@
 package com.example.katalogfilm.data.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Movie {
     private final int id;
-    private final String title;
-    private final String posterPath;
-    private final double rating;
 
-    public Movie(int id, String title, String posterPath, double rating) {
+    private final String title;
+
+    @SerializedName("poster_path")
+    private final String posterPath;
+
+    @SerializedName("vote_average")
+    private final double voteAverage;
+
+
+    public Movie(int id, String title, String posterPath, double voteAverage) {
         this.id = id;
         this.title = title;
         this.posterPath = posterPath;
-        this.rating = rating;
+        this.voteAverage = voteAverage;
     }
 
     public int getId() {
@@ -25,7 +33,7 @@ public class Movie {
         return posterPath;
     }
 
-    public double getRating() {
-        return rating;
+    public double getVoteAverage() {
+        return voteAverage;
     }
 }

@@ -12,18 +12,32 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.katalogfilm.data.model.Movie;
-import com.example.katalogfilm.data.model.remote.TmdbClient;
+//import com.example.katalogfilm.data.model.remote.TmdbClient;
+import com.example.katalogfilm.data.remote.RetrofitClient;
+import com.example.katalogfilm.data.response.MovieResponse;
 import com.example.katalogfilm.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private MovieAdapter adapter;
+    private MovieAdapter movieAdapter;
+
+    private Call<MovieResponse> movieCall;
+
+    private boolean nowPlayingFinished;
+
+    public HomeFragment() {
+        // kosong
+        movieAdapter = new MovieAdapter();
+    }
 
     @NonNull
     @Override
@@ -45,49 +59,107 @@ public class HomeFragment extends Fragment {
     ) {
         super.onViewCreated(view, savedInstanceState);
 
-        adapter = new MovieAdapter(new ArrayList<>());
+        nowPlayingFinished = false;
 
-        binding.recyclerMovie.setLayoutManager(
-                new LinearLayoutManager(requireContext())
-        );
-
-        binding.recyclerMovie.setAdapter(adapter);
-
-        loadMovies();
+        setupRecycleView();
+        fetchNowPlayingMovies();
     }
 
-    private void loadMovies() {
+    private void updateLoading() {
+        if (binding == null) return;
+
+        boolean loading = !nowPlayingFinished;
+
+        binding.progressBar.setVisibility(
+                loading ? View.VISIBLE : View.GONE
+        );
+    }
+
+    private void setupRecycleView() {
+        movieAdapter = new MovieAdapter();
+
+        LinearLayoutManager layoutManager =
+                new LinearLayoutManager(
+                        requireContext(),
+                        LinearLayoutManager.HORIZONTAL,
+                        false
+                );
+
+        binding.rvNowPlaying.setLayoutManager(layoutManager);
+        binding.rvNowPlaying.setAdapter(movieAdapter);
+
+        binding.rvNowPlaying.setNestedScrollingEnabled(false);
+    }
+
+    private void fetchNowPlayingMovies() {
         binding.progressBar.setVisibility(View.VISIBLE);
         binding.txtError.setVisibility(View.GONE);
 
-        TmdbClient.getPopularMovies(
-                new TmdbClient.MovieCallback() {
-                    @Override
-                    public void onSuccess(List<Movie> movies) {
-                        if (binding == null) return;
+        movieCall = RetrofitClient.getService().getNowPlayingMovies("id-ID",1);
 
-                        binding.progressBar.setVisibility(View.GONE);
+        movieCall.enqueue(new Callback<MovieResponse>() {
 
-                        adapter = new MovieAdapter(movies);
-                        binding.recyclerMovie.setAdapter(adapter);
-                    }
-
-                    @Override
-                    public void onError(String msg) {
-                        if (binding == null) return;
-
-                        binding.progressBar.setVisibility(View.GONE);
-                        binding.txtError.setVisibility(View.VISIBLE);
-                        binding.txtError.setText(
-                                "Gagal Memuat Film:" + msg
-                        );
-                    }
+            @Override
+            public void onResponse(@NonNull Call<MovieResponse> call, @Nullable Response<MovieResponse> response) {
+                if (binding == null) {
+                    return;
                 }
-        );
+
+                nowPlayingFinished = true;
+
+                binding.progressBar.setVisibility(View.GONE);
+
+                if (response.isSuccessful() && response.body() != null) {
+
+                    List<Movie> movies = response.body().getResults();
+
+                    movieAdapter.setMovies(movies);
+
+                    if (movies == null || movies.isEmpty()) {
+                        binding.txtError.setText(
+                                "Belum ada film yng ditemukan"
+                        );
+                        binding.txtError.setVisibility(View.VISIBLE);
+                    }
+
+                } else {
+                    binding.txtError.setText(
+                            "Gagal mengabil data. kode: "
+                            + response.code()
+                    );
+
+
+                    binding.txtError.setVisibility(View.VISIBLE);
+
+                    updateLoading();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<MovieResponse> call, @NonNull Throwable t) {
+                if (binding == null) {
+                    return;
+                }
+
+                nowPlayingFinished = true;
+
+                binding.progressBar.setVisibility(View.GONE);
+                binding.txtError.setText("Koneksi Gagal: " + t.getLocalizedMessage());
+
+                binding.txtError.setVisibility(View.VISIBLE);
+
+                updateLoading();
+            }
+        });
     }
 
     @Override
     public void onDestroyView() {
+        if (movieCall != null) {
+            movieCall.cancel();
+            movieCall = null;
+        }
+
         super.onDestroyView();
         binding = null;
     }

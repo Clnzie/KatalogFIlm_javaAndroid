@@ -1,10 +1,7 @@
 package com.example.katalogfilm.ui.home;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,36 +9,50 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.katalogfilm.R;
 import com.example.katalogfilm.data.model.Movie;
+import com.example.katalogfilm.databinding.ItemMovieBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class MovieAdapter
         extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
-    private final List<Movie> movies;
+    private final List<Movie> movieList = new ArrayList<>();
 
-    public MovieAdapter(List<Movie> movies) {
-        this.movies = movies;
+    public void setMovies(List<Movie> movies) {
+        movieList.clear();
+
+        if (movies != null) {
+            movieList.addAll(movies);
+        }
+
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public MovieViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).
-                inflate(R.layout.item_movie, parent, false);
+    public MovieViewHolder onCreateViewHolder (
+            @NonNull ViewGroup parent, int viewType) {
 
-        return new MovieViewHolder(view);
+        ItemMovieBinding binding = ItemMovieBinding.inflate(
+                LayoutInflater.from(parent.getContext()),
+                parent,
+                false
+        );
+
+        return new MovieViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(
-            @NonNull MovieViewHolder holder, int position
-    ) {
-        Movie movie = movies.get(position);
+            @NonNull MovieViewHolder holder, int position) {
 
-        holder.txtTitle.setText(movie.getTitle());
-        holder.txtRating.setText(String.format(Locale.US, "★ %.1f / 10", movie.getRating()));
+        Movie movie = movieList.get(position);
+
+        holder.binding.tvMovieTitle.setText(movie.getTitle());
+
+//        holder.binding.txtRating.setText(String.format(Locale.US, "★ %.1f / 10", movie.getVoteAverage()));
 
         String posterPath = movie.getPosterPath();
 
@@ -54,12 +65,12 @@ public class MovieAdapter
                     .centerCrop()
                     .placeholder(R.drawable.ic_launcher_background)
                     .error(R.drawable.ic_launcher_background)
-                    .into(holder.imgPoster);
+                    .into(holder.binding.imgMovie);
         } else {
             Glide.with(holder.itemView.getContext())
-                    .clear(holder.imgPoster);
+                    .clear(holder.binding.imgMovie);
 
-            holder.imgPoster.setImageResource(
+            holder.binding.imgMovie.setImageResource(
                     R.drawable.ic_launcher_background
             );
         }
@@ -67,20 +78,15 @@ public class MovieAdapter
 
     @Override
     public int getItemCount() {
-        return movies.size();
+        return movieList.size();
     }
 
     static class MovieViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgPoster;
-        TextView txtTitle;
-        TextView txtRating;
+        final ItemMovieBinding binding;
 
-        MovieViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            imgPoster = itemView.findViewById(R.id.imgPoster);
-            txtTitle = itemView.findViewById(R.id.txtTitle);
-            txtRating = itemView.findViewById(R.id.txtRating);
+        MovieViewHolder(ItemMovieBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

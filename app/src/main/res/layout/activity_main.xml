@@ -25,7 +25,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu">
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:backgroundTint="@color/col1"
+        app:itemRippleColor="@color/col1"
+        app:itemIconSize="24dp"
+        app:itemActiveIndicatorStyle="@color/col1"
+        app:itemTextColor="@color/bottom_nav_color"
+        app:itemIconTint="@color/bottom_nav_color"
+        >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

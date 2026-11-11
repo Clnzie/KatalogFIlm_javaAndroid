@@ -1,45 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/col1"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".ui.home.HomeFragment">
+    android:fillViewport="true"
+    android:clipToPadding="false">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/col2"
-        android:layout_gravity="center"
-        android:text="FIlm Popular on this day" />
+        android:orientation="vertical"
+        android:paddingBottom="24dp">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        <!-- HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome to,"
+                android:textColor="@color/col3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MOVIX"
+                android:textColor="@color/col3"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.03" />
+
+        </LinearLayout>
+
+        <!-- BANNER CAROUSEL -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerBanner"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:overScrollMode="never" />
+
+        <!-- INDICATOR -->
+        <LinearLayout
+            android:id="@+id/layoutDots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            android:paddingBottom="20dp" />
+
+        <!-- NOW PLAYING HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="14dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Now Playing"
+                android:textColor="@color/col3"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSeeAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="see all"
+                android:textColor="@color/col2"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <!-- NOW PLAYING CAROUSEL -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNowPlaying"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never" />
+
+    </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/txtError"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:padding="8dp"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerMovie"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="12dp"
-        />
-
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>
