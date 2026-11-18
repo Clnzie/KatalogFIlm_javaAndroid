@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="movix_bg">#161616</color>
+    <color name="movix_field_bg">#1E1E1E</color>
+    <color name="movix_field_stroke">#3A3A3A</color>
+    <color name="movix_yellow">#F1C913</color>
+    <color name="movix_text">#FFFFFF</color>
+    <color name="movix_text_sub">#BDBDBD</color>
+    <color name="movix_hint">#8A8A8A</color>
+    <color name="movix_social_bg">#2A2A2A</color>
+    <color name="movix_divider">#3A3A3A</color>
+</resources>
