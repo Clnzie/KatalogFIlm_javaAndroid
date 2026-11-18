@@ -13,12 +13,16 @@ public class Movie {
     @SerializedName("vote_average")
     private final double voteAverage;
 
+    @SerializedName("backdrop_path")
+    private final String backdropPath;
 
-    public Movie(int id, String title, String posterPath, double voteAverage) {
+
+    public Movie(int id, String title, String posterPath, double voteAverage, String backdropPath) {
         this.id = id;
         this.title = title;
         this.posterPath = posterPath;
         this.voteAverage = voteAverage;
+        this.backdropPath = backdropPath;
     }
 
     public int getId() {
@@ -35,5 +39,9 @@ public class Movie {
 
     public double getVoteAverage() {
         return voteAverage;
+    }
+
+    public String getBackdropPath() {
+        return backdropPath;
     }
 }

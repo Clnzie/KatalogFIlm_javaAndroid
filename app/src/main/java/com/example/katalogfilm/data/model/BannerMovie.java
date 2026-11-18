@@ -1,15 +1,21 @@
 package com.example.katalogfilm.data.model;
 
 public class BannerMovie {
+    private int id;
 
     private String title;
     private String genre;
-    private int image;
+    private String backdropPath;
 
-    public BannerMovie(String title, String genre, int image) {
+    public BannerMovie(int id, String title, String genre, String backdropPath) {
+        this.id = id;
         this.title = title;
         this.genre = genre;
-        this.image = image;
+        this.backdropPath = backdropPath;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -20,7 +26,7 @@ public class BannerMovie {
         return genre;
     }
 
-    public int getImage() {
-        return image;
+    public String getBackdropPath() {
+        return backdropPath;
     }
 }

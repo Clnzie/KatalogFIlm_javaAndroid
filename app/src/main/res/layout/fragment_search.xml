@@ -1,17 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/col1"
     tools:context=".ui.search.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Main Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <!-- Search Bar -->
+        <EditText
+            android:id="@+id/etSearchMovie"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_search"
+            android:hint="Find Your Movie"
+            android:textColor="@color/col3"
+            android:textColorHint="#AAAAAA"
+            android:textSize="13sp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:singleLine="true"
+            android:inputType="text"
+            android:imeOptions="actionSearch" />
+
+        <!-- Search Result Grid -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSearchMovies"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="12dp"
+            android:clipToPadding="false"
+            android:visibility="gone"
+            tools:listitem="@layout/item_movie_grid" />
+
+    </LinearLayout>
+
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/layoutSearchEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@color/col2"
-        android:text="Search" />
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/imgSearchEmpty"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/outline_broken_image_24"
+            android:scaleType="fitCenter"
+            android:contentDescription="No movie found" />
+
+        <TextView
+            android:id="@+id/tvSearchEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="No One Movie Found"
+            android:textColor="@color/col3"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <!-- Loading -->
+    <ProgressBar
+        android:id="@+id/progressSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/col2"
+        android:visibility="gone" />
 
 </FrameLayout>

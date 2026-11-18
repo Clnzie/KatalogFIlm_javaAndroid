@@ -1,3 +1,4 @@
+
 package com.example.katalogfilm.ui.home;
 
 import android.view.LayoutInflater;
@@ -13,12 +14,23 @@ import com.example.katalogfilm.databinding.ItemMovieBinding;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class MovieAdapter
         extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
     private final List<Movie> movieList = new ArrayList<>();
+
+    // Interface untuk menangani klik card
+    public interface OnMovieClickListener {
+        void onMovieClick(Movie movie);
+    }
+
+    private final OnMovieClickListener listener;
+
+    // Constructor
+    public MovieAdapter(OnMovieClickListener listener) {
+        this.listener = listener;
+    }
 
     public void setMovies(List<Movie> movies) {
         movieList.clear();
@@ -32,7 +44,7 @@ public class MovieAdapter
 
     @NonNull
     @Override
-    public MovieViewHolder onCreateViewHolder (
+    public MovieViewHolder onCreateViewHolder(
             @NonNull ViewGroup parent, int viewType) {
 
         ItemMovieBinding binding = ItemMovieBinding.inflate(
@@ -52,11 +64,10 @@ public class MovieAdapter
 
         holder.binding.tvMovieTitle.setText(movie.getTitle());
 
-//        holder.binding.txtRating.setText(String.format(Locale.US, "★ %.1f / 10", movie.getVoteAverage()));
-
         String posterPath = movie.getPosterPath();
 
         if (posterPath != null && !posterPath.isEmpty()) {
+
             String posterUrl =
                     "https://image.tmdb.org/t/p/w500" + posterPath;
 
@@ -66,7 +77,9 @@ public class MovieAdapter
                     .placeholder(R.drawable.ic_launcher_background)
                     .error(R.drawable.ic_launcher_background)
                     .into(holder.binding.imgMovie);
+
         } else {
+
             Glide.with(holder.itemView.getContext())
                     .clear(holder.binding.imgMovie);
 
@@ -74,6 +87,19 @@ public class MovieAdapter
                     R.drawable.ic_launcher_background
             );
         }
+
+        // Klik seluruh area card
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                int currentPosition = holder.getBindingAdapterPosition();
+
+                if (currentPosition != RecyclerView.NO_POSITION) {
+                    listener.onMovieClick(
+                            movieList.get(currentPosition)
+                    );
+                }
+            }
+        });
     }
 
     @Override
@@ -82,6 +108,7 @@ public class MovieAdapter
     }
 
     static class MovieViewHolder extends RecyclerView.ViewHolder {
+
         final ItemMovieBinding binding;
 
         MovieViewHolder(ItemMovieBinding binding) {

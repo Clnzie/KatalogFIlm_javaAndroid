@@ -52,7 +52,7 @@
                 android:textSize="10sp" />
 
             <Button
-                android:id="@+id/btnBannerDetail"
+                android:id="@+id/btnDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="38dp"
                 android:layout_marginTop="8dp"
