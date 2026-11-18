@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.example.katalogfilm.databinding.ActivityMainBinding;
 import com.example.katalogfilm.ui.akun.AkunFragment;
@@ -22,6 +25,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        ViewCompat.setOnApplyWindowInsetsListener(
+                binding.getRoot(),
+                (view, windowInsets) -> {
+
+                    Insets insets = windowInsets.getInsets(
+                            WindowInsetsCompat.Type.statusBars()
+                    );
+
+                    view.setPadding(
+                            0,
+                            insets.top,
+                            0,
+                            0
+                    );
+
+                    return windowInsets;
+                }
+        );
 
         if (savedInstanceState == null) {
             replaceFragment(new HomeFragment());

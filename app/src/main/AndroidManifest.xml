@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KatalogFIlm" >
         <activity
+            android:name=".ui.seeall.SeeAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.MovieDetail.MovieDetail"
+            android:exported="false"/>
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
