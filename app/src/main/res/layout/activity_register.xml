@@ -1,6 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login_gradient">
 
-</ScrollView>
+    <!-- BACKGROUND POSTER -->
+    <ImageView
+        android:id="@+id/imgRegisterBackground"
+        android:layout_width="0dp"
+        android:layout_height="360dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_screen"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- OVERLAY -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_login_overlay"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- REGISTER CONTENT -->
+    <ScrollView
+        android:id="@+id/registerScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="false"
+        android:clipToPadding="false"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvLoginLink"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- LOGO -->
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:src="@drawable/movix_white" />
+
+            <!-- SUBTITLE -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Daftar dan mulai\npetualangan menontonmu"
+                android:textColor="@color/col3"
+                android:textSize="16sp"/>
+
+
+            <!-- EMAIL LABEL -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Email"
+                android:textColor="@color/col3"
+                android:textSize="14sp"/>
+
+            <!-- EMAIL -->
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_login_input"
+                android:hint="Masukkan email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/col3"
+                android:textColorHint="#666666"
+                android:singleLine="true"/>
+
+            <!-- PASSWORD LABEL -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Password"
+                android:textColor="@color/col3"
+                android:textSize="14sp"/>
+
+            <!-- PASSWORD -->
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_login_input"
+                android:hint="Buat password"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/col3"
+                android:textColorHint="#666666"
+                android:singleLine="true"/>
+
+            <!-- CONFIRM PASSWORD LABEL -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Konfirmasi password"
+                android:textColor="@color/col3"
+                android:textSize="14sp"/>
+
+            <!-- CONFIRM PASSWORD -->
+            <EditText
+                android:id="@+id/edtConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_login_input"
+                android:hint="Masukkan ulang password"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/col3"
+                android:textColorHint="#666666"
+                android:singleLine="true"/>
+
+            <!-- REGISTER BUTTON -->
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/col2"
+                android:text="Daftar"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textAllCaps="false"/>
+
+            <!-- REGISTER INFO -->
+            <TextView
+                android:id="@+id/tvRegisterInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:textColor="@color/col3"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- LOGIN LINK -->
+    <TextView
+        android:id="@+id/tvLoginLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Sudah punya akun? Masuk Sekarang"
+        android:textColor="@color/col3"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

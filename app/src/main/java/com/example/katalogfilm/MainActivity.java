@@ -1,5 +1,6 @@
 package com.example.katalogfilm;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.katalogfilm.auth.LoginActivity;
+import com.example.katalogfilm.auth.RegisterActivity;
+import com.example.katalogfilm.auth.SessionManager;
 import com.example.katalogfilm.databinding.ActivityMainBinding;
 import com.example.katalogfilm.ui.akun.AkunFragment;
 import com.example.katalogfilm.ui.fav.FavFragment;
@@ -23,7 +27,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SessionManager sessionManager = new SessionManager(this);
+
+        if (!sessionManager.isLoggedIn()) {
+
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    LoginActivity.class
+            );
+
+            startActivity(intent);
+            finish();
+            return;
+        }
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+
         setContentView(binding.getRoot());
 
         ViewCompat.setOnApplyWindowInsetsListener(
@@ -69,10 +89,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void replaceFragment (Fragment fragment) {
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, fragment)
+                .commit();
 
     }
 }

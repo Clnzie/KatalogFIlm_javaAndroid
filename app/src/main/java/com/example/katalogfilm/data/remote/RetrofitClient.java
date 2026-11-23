@@ -11,6 +11,8 @@ public class RetrofitClient {
 
     private static final String BASE_URL = "https://api.themoviedb.org/3/";
 
+    private static final String API_KEY = "b0b1b7542963befc2f848ce363e5c4ab";
+
     private static final String TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMGIxYjc1NDI5NjNiZWZjMmY4NDhjZTM2M2U1YzRhYiIsIm5iZiI6MTcwNTk3NDE0MC4wMzgsInN1YiI6IjY1YWYxOTdjYmQ1ODhiMDEwYjVkYzQ4NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.U-e93328v0DHgDO4dWJyCha_THXFdANzWr1uy37SF-A";
 
     private static Retrofit retrofit;
@@ -46,5 +48,9 @@ public class RetrofitClient {
         }
 
         return retrofit.create(TMDBService.class);
+    }
+
+    public static String getApiKey() {
+        return API_KEY;
     }
 }

@@ -1,284 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/movix_bg"
-    android:fillViewport="true">
+    android:background="@drawable/bg_login_gradient">
 
+    <!-- BACKGROUND POSTER -->
+    <ImageView
+        android:id="@+id/imgLoginBackground"
+        android:layout_width="0dp"
+        android:layout_height="360dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_screen"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- OVERLAY -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_login_overlay"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- MAIN CONTENT -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/loginContent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvRegisterLink"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.55">
 
-        <!-- header: poster film + logo + teks sambutan -->
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="320dp">
+        <!-- LOGO -->
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/movix_white" />
 
-            <!-- ganti dengan gambar poster kalau sudah ada, misal android:src="@drawable/poster_film" -->
-            <ImageView
-                android:id="@+id/imgPoster"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#2B2B2B"
-                android:contentDescription="Poster film"
-                android:scaleType="centerCrop" />
-
-            <!-- gradasi supaya poster memudar ke background -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradient_header" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingBottom="8dp">
-
-                <!-- logo MOVIX (huruf I diganti ikon film) -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MOV"
-                        android:textColor="@color/movix_text"
-                        android:textSize="44sp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:layout_width="34dp"
-                        android:layout_height="44dp"
-                        android:contentDescription="Logo"
-                        android:src="@drawable/ic_film" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="X"
-                        android:textColor="@color/movix_text"
-                        android:textSize="44sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="Masuk untuk melanjutkan\npetualangan menontonmu"
-                    android:textColor="@color/movix_text_sub"
-                    android:textSize="17sp" />
-            </LinearLayout>
-        </FrameLayout>
-
-        <!-- form login -->
-        <LinearLayout
+        <!-- SUBTITLE -->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="24dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="24dp">
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Masuk untuk melanjutkan\npetualangan menontonmu"
+            android:textColor="@color/col3"
+            android:textSize="16sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email atau Username"
-                android:textColor="@color/movix_text"
-                android:textSize="15sp" />
+        <!-- EMAIL LABEL -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Email"
+            android:textColor="@color/col3"
+            android:textSize="14sp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_input"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp">
+        <!-- EMAIL -->
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_login_input"
+            android:hint="Masukan Email"
+            android:inputType="textEmailAddress"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/col3"
+            android:textColorHint="#666666"
+            android:singleLine="true"/>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="Ikon user"
-                    android:src="@drawable/ic_person" />
+        <!-- PASSWORD LABEL -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Password"
+            android:textColor="@color/col3"
+            android:textSize="14sp"/>
 
-                <EditText
-                    android:id="@+id/etUsername"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="Masukkan email atau username"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:textColor="@color/movix_text"
-                    android:textColorHint="@color/movix_hint"
-                    android:textSize="15sp" />
-            </LinearLayout>
+        <!-- PASSWORD -->
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_login_input"
+            android:hint="Masukan Password"
+            android:inputType="textPassword"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/col3"
+            android:textColorHint="#666666"
+            android:singleLine="true"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Password"
-                android:textColor="@color/movix_text"
-                android:textSize="15sp" />
+        <!-- LOGIN BUTTON -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/col2"
+            android:text="Masuk"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_input"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp">
+        <!-- LOGIN INFO -->
+        <TextView
+            android:id="@+id/tvLoginInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:textColor="@color/col3"
+            android:textSize="14sp"/>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="Ikon kunci"
-                    android:src="@drawable/ic_lock" />
-
-                <EditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="Masukkan password"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:textColor="@color/movix_text"
-                    android:textColorHint="@color/movix_hint"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:id="@+id/ivTogglePassword"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:contentDescription="Tampilkan password"
-                    android:src="@drawable/ic_eye_off" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tvLupaPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="10dp"
-                android:padding="4dp"
-                android:text="Lupa Password?"
-                android:textColor="@color/movix_yellow"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/btnMasuk"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/bg_button_masuk"
-                android:backgroundTint="@null"
-                android:text="MASUK"
-                android:textColor="#111111"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <!-- pemisah "atau masuk dengan" -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/movix_divider" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:text="atau masuk dengan"
-                    android:textColor="@color/movix_hint"
-                    android:textSize="13sp" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/movix_divider" />
-            </LinearLayout>
-
-            <!-- tombol sosial -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/btnGoogle"
-                    android:layout_width="80dp"
-                    android:layout_height="52dp"
-                    android:background="@drawable/bg_social"
-                    android:contentDescription="Masuk dengan Google"
-                    android:padding="14dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_google" />
-
-                <ImageButton
-                    android:id="@+id/btnFacebook"
-                    android:layout_width="80dp"
-                    android:layout_height="52dp"
-                    android:layout_marginStart="16dp"
-                    android:background="@drawable/bg_social"
-                    android:contentDescription="Masuk dengan Facebook"
-                    android:padding="14dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_facebook" />
-            </LinearLayout>
-
-            <!-- daftar -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:layout_marginBottom="24dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Belum punya akun? "
-                    android:textColor="@color/movix_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tvDaftar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Daftar Sekarang"
-                    android:textColor="@color/movix_yellow"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+
+    <!-- REGISTER LINK -->
+    <TextView
+        android:id="@+id/tvRegisterLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Belum punya akun? Daftar Sekarang"
+        android:textColor="@color/col3"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
