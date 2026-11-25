@@ -1,6 +1,20 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
 }
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.inputStream().use {
+        localProperties.load(it)
+    }
+}
+
+val supabaseUrl = localProperties.getProperty("SUPABASE_URL", "")
+val supabaseKey = localProperties.getProperty("SUPABASE_KEY", "")
 
 android {
     namespace = "com.example.katalogfilm"
@@ -17,6 +31,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        buildConfigField("String", "SUPABASE_URL", "\"${supabaseUrl}\"")
+        buildConfigField("String", "SUPABASE_KEY", "\"${supabaseKey}\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -31,8 +48,8 @@ android {
     }
 
     buildFeatures{
-
         viewBinding = true
+        buildConfig = true
     }
 
     compileOptions {
